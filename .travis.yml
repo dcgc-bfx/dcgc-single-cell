@@ -45,7 +45,8 @@ install:
 
 script:
   # recipe
-  - /bin/bash .travis/build.sh Singularity
+  - cd single_cell
+  - /bin/bash ../.travis/build.sh Singularity
 
                                # recipe with tag
   #- /bin/bash .travis/build.sh --tag sneeze Singularity.tag
