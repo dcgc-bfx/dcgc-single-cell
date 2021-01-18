@@ -26,4 +26,5 @@ jobs:
 
     - name: Build Container
       run: |
-       singularity build single_cell.sif single_cell/Singularity
+        cd single_cell
+        singularity build single_cell.sif Singularity
