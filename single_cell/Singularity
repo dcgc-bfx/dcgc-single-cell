@@ -14,7 +14,7 @@ jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
 
 %post
   # update conda
-  mamba update --all --yes --quiet
+  /bin/bash mamba update --all --yes --quiet
 
   # install python packages with mamba
   mamba install --quiet --yes \
