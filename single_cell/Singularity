@@ -10,7 +10,8 @@ jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
     JUP_NOTEBOOK_DIR=$HOME
     JUP_CONFIG="/opt/conda/etc/jupyter/jupyter_notebook_config.py"
     DEBIAN_FRONTEND=noninteractive
-    export JUP_PORT JUP_IPNAME JUP_NOTEBOOK_DIR JUP_CONFIG DEBIAN_FRONTEND
+    PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    export PATH JUP_PORT JUP_IPNAME JUP_NOTEBOOK_DIR JUP_CONFIG DEBIAN_FRONTEND
 
 %post
   echo $PATH
