@@ -2,7 +2,7 @@ Bootstrap: docker
 From: gcfntnu/python-base-conda:4.8.2
 
 %files
-jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.jsonß
+jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
 
 %environment
     JUP_PORT=8888
