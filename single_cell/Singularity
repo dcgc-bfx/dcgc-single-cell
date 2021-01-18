@@ -13,8 +13,9 @@ jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
     export JUP_PORT JUP_IPNAME JUP_NOTEBOOK_DIR JUP_CONFIG DEBIAN_FRONTEND
 
 %post
+  echo $PATH
   # update conda
-  /bin/bash mamba update --all --yes --quiet
+  /opt/conda/bin/mamba update --all --yes --quiet
 
   # install python packages with mamba
   mamba install --quiet --yes \
