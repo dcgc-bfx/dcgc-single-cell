@@ -28,7 +28,7 @@ addons:
     update: true
 
 
-dist: xenial
+dist: bionic
 
 
 jobs:
