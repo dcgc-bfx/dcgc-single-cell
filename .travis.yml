@@ -45,7 +45,7 @@ install:
 
 script:
   # recipe
-  - cp single_cell/* .
+  - cd single_cell
   - /bin/bash .travis/build.sh Singularity
 
                                # recipe with tag
