@@ -1,12 +1,12 @@
-name: Build
+name: Build and Push
 on:
-  pull_request:
+  push:
     branches:
       - main
 jobs:
 
-  build:
-    name: Build
+  buildandpush:
+    name: Build and Push
     runs-on: ubuntu-18.04
     strategy:
       matrix:
@@ -23,3 +23,11 @@ jobs:
       run: |
         cd single_cell
         singularity build single_cell.sif Singularity
+
+    - name: Push Container
+      env:
+        SYLABS_TOKEN: ${{secrets.SYLABS_TOKEN}}
+      run: |
+        echo "$SYLABS_TOKEN" > sylabs-token
+        singularity remote login --tokenfile sylabs-token
+        singularity build --remote -d library://fabianrost84/dcgc/dcgc-single-cell.sif Singularity
