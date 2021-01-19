@@ -1,4 +1,4 @@
-name: Build and Push
+name: Build and Remote Build
 on:
   push:
     branches:
