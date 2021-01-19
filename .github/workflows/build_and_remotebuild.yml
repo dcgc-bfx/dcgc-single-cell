@@ -6,7 +6,7 @@ on:
 jobs:
 
   buildandpush:
-    name: Build and Push
+    name: Build and Remote-Build
     runs-on: ubuntu-18.04
     strategy:
       matrix:
@@ -24,7 +24,7 @@ jobs:
         cd single_cell
         singularity build single_cell.sif Singularity
 
-    - name: Push Container
+    - name: Remote-Build Container
       env:
         SYLABS_TOKEN: ${{secrets.SYLABS_TOKEN}}
       run: |
