@@ -28,6 +28,7 @@ jobs:
       env:
         SYLABS_TOKEN: ${{secrets.SYLABS_TOKEN}}
       run: |
+        cd single_cell
         echo "$SYLABS_TOKEN" > sylabs-token
         singularity remote login --tokenfile sylabs-token
         singularity build --remote -d library://fabianrost84/dcgc/dcgc-single-cell.sif Singularity
