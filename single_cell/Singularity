@@ -11,8 +11,6 @@ From: gcfntnu/python-base-conda:4.8.2
     export JUP_PORT JUP_IPNAME JUP_NOTEBOOK_DIR JUP_CONFIG DEBIAN_FRONTEND
 
 %post
-    wget https://raw.githubusercontent.com/dcgc-bfx/dcgc-single-cell/main/single_cell/jupyter_notebook_config.json \
-      --directory-prefix=/opt/conda/etc/jupyter/
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
   # update conda
@@ -110,6 +108,19 @@ From: gcfntnu/python-base-conda:4.8.2
     r-venndiagram \
     r-xlsx
 
+  # cerebroApp dependencies
+  mamba install --quiet --yes \
+    bioconductor-gseabase  \
+    bioconductor-gsva \
+    bioconductor-qvalue \
+    r-colourpicker \
+    r-msigdbr \
+    r-shinycssloaders \
+    r-shinydashboard \
+    r-shinyfiles \
+    r-shinyjs \
+    r-shinywidgets
+
   # clean conda cache
   mamba clean -ai
 
@@ -125,6 +136,9 @@ From: gcfntnu/python-base-conda:4.8.2
 
   # jupyterlab extensions
   jupyter labextension install "@jupyterlab/toc"
+  # download jupyter config
+  wget https://raw.githubusercontent.com/dcgc-bfx/dcgc-single-cell/main/single_cell/jupyter_notebook_config.json \
+      --directory-prefix=/opt/conda/etc/jupyter/
 
   # rstudio server
   apt-get update && apt-get install -y gdebi-core uuid
@@ -137,17 +151,18 @@ From: gcfntnu/python-base-conda:4.8.2
   # for running rstudio server with conda R
   git clone https://github.com/grst/rstudio-server-conda.git
 
-  # # install R dependencies not available via conda
-  # R -e 'BiocManager::install(c(
-  #   "romanhaa/cerebroApp",
-  #   "rnaseqGene"),
-  #   ask = FALSE, update = TRUE)'
-  # RUN R -e "devtools::install_github(repo = 'yanlinlin82/ggvenn')" && \
-  #     R -e "devtools::install_github(repo = 'cboettig/knitcitations')" && \
-  #     R -e 'install.packages(c( \
-  #           "hutils", \
-  #           "singlecellhaystack"), repos="http://cran.r-project.org")'
-  #
+  # install R dependencies not available from conda
+  R -e "devtools::install_github(repo = 'yanlinlin82/ggvenn')"
+  R -e 'BiocManager::install(c(
+    "romanhaa/cerebroApp"),
+    ask = FALSE, update = FALSE)'
+
+  R -e "devtools::install_github(repo = 'cboettig/knitcitations')"
+  R -e 'install.packages(c(
+        "PoiClaClu",
+        "hutils",
+        "singleCellHaystack"), repos="http://cran.r-project.org")'
+
   chown -R root:users /opt
   chmod -R g+w /opt
 
