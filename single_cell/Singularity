@@ -35,6 +35,7 @@ From: gcfntnu/python-base-conda:4.8.2
     loompy \
     louvain \
     matplotlib \
+    mscorefonts \
     nodejs \
     numba \
     numexpr \
