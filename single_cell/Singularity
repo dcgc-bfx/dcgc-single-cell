@@ -42,6 +42,7 @@ From: gcfntnu/python-base-conda:4.8.2
     openpyxl \
     pandas \
     pip \
+    pybedtools \
     pybiomart \
     pypairs \
     pytables \
