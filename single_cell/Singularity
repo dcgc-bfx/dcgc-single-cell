@@ -79,6 +79,7 @@ From: gcfntnu/python-base-conda:4.8.2
     r-argparse \
     r-base=4.0.3 \
     r-biocmanager \
+    r-kableextra \
     r-data.table \
     r-devtools \
     r-dplyr \
