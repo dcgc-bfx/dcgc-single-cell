@@ -10,6 +10,9 @@ From: gcfntnu/python-base-conda:4.8.2
     DEBIAN_FRONTEND=noninteractive
     export JUP_PORT JUP_IPNAME JUP_NOTEBOOK_DIR JUP_CONFIG DEBIAN_FRONTEND
 
+    . /opt/conda/etc/profile.d/conda.sh
+    conda activate /opt/conda
+
 %post
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
@@ -182,7 +185,7 @@ From: gcfntnu/python-base-conda:4.8.2
   if [ -n "$JUP_IPNAME" ]; then
   IPNAME="--ip=${JUP_IPNAME}"
   fi
-ß
+
   NOTEBOOK_DIR=""
   if [ -n "$JUP_NOTEBOOK_DIR" ]; then
   NOTEBOOK_DIR="--notebook-dir=${JUP_NOTEBOOK_DIR}"
@@ -210,7 +213,7 @@ From: gcfntnu/python-base-conda:4.8.2
   if [ -n "$JUP_IPNAME" ]; then
   IPNAME="--ip=${JUP_IPNAME}"
   fi
-  ß
+  
   NOTEBOOK_DIR=""
   if [ -n "$JUP_NOTEBOOK_DIR" ]; then
   NOTEBOOK_DIR="--notebook-dir=${JUP_NOTEBOOK_DIR}"
