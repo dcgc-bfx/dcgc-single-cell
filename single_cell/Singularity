@@ -5,7 +5,7 @@ From: gcfntnu/python-base-conda:4.8.2
 %environment
     JUP_PORT=8888
     JUP_IPNAME=localhost
-    JUP_NOTEBOOK_DIR=$HOME
+    JUP_NOTEBOOK_DIR=/
     JUP_CONFIG="/opt/conda/etc/jupyter/jupyter_notebook_config.py"
     DEBIAN_FRONTEND=noninteractive
     export JUP_PORT JUP_IPNAME JUP_NOTEBOOK_DIR JUP_CONFIG DEBIAN_FRONTEND
