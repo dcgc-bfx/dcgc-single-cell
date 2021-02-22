@@ -1,0 +1,17 @@
+Bootstrap: localimage
+From: single_cell.sif
+
+%post
+  wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1103-amd64.deb
+  apt-get update
+  apt-get install -y \
+    libgl1-mesa-dev \
+    libgl1-mesa-glx \
+    libnss3 \
+    libasound2 \
+    libxslt1-dev \
+    mesa-utils \
+    qt5-default 
+  gdebi -n rstudio-1.4.1103-amd64.deb
+  rm rstudio-1.4.1103-amd64.deb
+  apt-get clean
