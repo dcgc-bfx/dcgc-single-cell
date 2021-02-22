@@ -1,8 +1,19 @@
 Bootstrap: docker
 From: gcfntnu/python-base-conda:4.8.2
 
+%help
+  Start jupyter lab:
+    singularity run --writable-tmpfs --app jupyter library://fabianrost84/dcgc/single-cell.sif
+  
+  Start rstudio server:
+    singularity run --writable-tmpfs --app rstudio-server library://fabianrost84/dcgc/single-cell.sif 8787
+
+  Start rstudio desktop
+    singularity run --writable-tmpfs --app rstudio library://fabianrost84/dcgc/single-cell.sif
+  
+
 %environment
-    DEBIAN_FRONTEND=noninteractive
+  DEBIAN_FRONTEND=noninteractive
 
 %post
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
