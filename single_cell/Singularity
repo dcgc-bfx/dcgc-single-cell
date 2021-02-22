@@ -166,16 +166,12 @@ From: gcfntnu/python-base-conda:4.8.2
 ## rstudio server ###
 #####################
 
-%appenv rstudio-server
-  . /opt/conda/etc/profile.d/conda.sh
-  conda activate /opt/conda
-
 %apprun rstudio-server
-  exec /rstudio-server-conda/start_rstudio_server.sh "${@}"
+  conda run --no-capture-output -p /opt/conda /rstudio-server-conda/start_rstudio_server.sh "${@}"
 
 #################
 ## jupyter lab ##
 #################
 
 %apprun jupyter
-  exec jupyter lab --no-browser "${@}"
+  jupyter lab --no-browser "${@}"
