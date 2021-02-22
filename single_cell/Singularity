@@ -184,8 +184,7 @@ From: gcfntnu/python-base-conda:4.8.2
         "hutils",
         "singleCellHaystack"), repos="http://cran.r-project.org")'
 
-  chown -R root:users /opt
-  chmod -R g+w /opt
+  chmod -R a+w /opt
 
 
 ####################
