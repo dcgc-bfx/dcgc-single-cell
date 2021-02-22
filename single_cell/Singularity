@@ -1,17 +1,8 @@
 Bootstrap: docker
 From: gcfntnu/python-base-conda:4.8.2
 
-
 %environment
-    JUP_PORT=8888
-    JUP_IPNAME=localhost
-    JUP_NOTEBOOK_DIR=/
-    JUP_CONFIG="/opt/conda/etc/jupyter/jupyter_notebook_config.py"
     DEBIAN_FRONTEND=noninteractive
-    export JUP_PORT JUP_IPNAME JUP_NOTEBOOK_DIR JUP_CONFIG DEBIAN_FRONTEND
-
-    . /opt/conda/etc/profile.d/conda.sh
-    conda activate /opt/conda
 
 %post
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -170,58 +161,21 @@ From: gcfntnu/python-base-conda:4.8.2
   chown -R root:users /opt
   chmod -R g+w /opt
 
-%startscript
-  # rstudio
-  exec /rstudio-server-conda/start_rstudio_server.sh 8787 &
 
-  #jupyter
-  PORT=""
-  if [ -n "$JUP_PORT" ]; then
-  PORT="--port=${JUP_PORT}"
-  fi
+#####################
+## rstudio server ###
+#####################
 
-  IPNAME=""
-  if [ -n "$JUP_IPNAME" ]; then
-  IPNAME="--ip=${JUP_IPNAME}"
-  fi
+%appenv rstudio-server
+  . /opt/conda/etc/profile.d/conda.sh
+  conda activate /opt/conda
 
-  NOTEBOOK_DIR=""
-  if [ -n "$JUP_NOTEBOOK_DIR" ]; then
-  NOTEBOOK_DIR="--notebook-dir=${JUP_NOTEBOOK_DIR}"
-  fi
+%apprun rstudio-server
+  exec /rstudio-server-conda/start_rstudio_server.sh "${@}"
 
-  CONFIG=""
-  if [ -n "$JUP_CONFIG" ]; then
-  CONFIG="--config=${JUP_CONFIG}"
-  fi
+#################
+## jupyter lab ##
+#################
 
-  exec jupyter lab --allow-root ${PORT} ${IPNAME} ${NOTEBOOK_DIR} \
-    ${CONFIG} --no-browser
-
-%runscript
-  # rstudio
-  exec /rstudio-server-conda/start_rstudio_server.sh 8787 &
-
-  #jupyter
-  PORT=""
-  if [ -n "$JUP_PORT" ]; then
-  PORT="--port=${JUP_PORT}"
-  fi
-
-  IPNAME=""
-  if [ -n "$JUP_IPNAME" ]; then
-  IPNAME="--ip=${JUP_IPNAME}"
-  fi
-  
-  NOTEBOOK_DIR=""
-  if [ -n "$JUP_NOTEBOOK_DIR" ]; then
-  NOTEBOOK_DIR="--notebook-dir=${JUP_NOTEBOOK_DIR}"
-  fi
-
-  CONFIG=""
-  if [ -n "$JUP_CONFIG" ]; then
-  CONFIG="--config=${JUP_CONFIG}"
-  fi
-
-  exec jupyter lab --allow-root ${PORT} ${IPNAME} ${NOTEBOOK_DIR} \
-    ${CONFIG} --no-browser
+%apprun jupyter
+  exec jupyter lab --no-browser "${@}"
