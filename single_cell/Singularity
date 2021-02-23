@@ -108,8 +108,8 @@ From: gcfntnu/python-base-conda:4.8.2
     r-readr \
     r-reticulate \
     r-rgl \
-    r-sctransform=0.2.0 `# version for single cell workflow` \
-    r-seurat=3.1.5 `# version for single cell workflow` \
+    r-sctransform \
+    r-seurat=4 \
     r-tidyr \
     r-tidyverse \
     r-upsetr \
