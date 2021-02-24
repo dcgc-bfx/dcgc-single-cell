@@ -16,14 +16,18 @@ jobs:
       image: quay.io/singularity/singularity:v${{ matrix.singularity_version }}
       options: --privileged
     steps:
+    - name: Free disk space
+      run: |
+         df -h
+         sudo rm -rf "/usr/local/share/boost"
+         sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+         df -h
     - name: Check out code for the container build
       uses: actions/checkout@v2
 
     - name: Build Container
       run: |
         df -h
-        sudo rm -rf "/usr/local/share/boost"
-        sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         cd single_cell
         df -h
         singularity build --disable-cache single_cell.sif Singularity
