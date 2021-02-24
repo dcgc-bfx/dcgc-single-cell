@@ -72,6 +72,7 @@ From: gcfntnu/python-base-conda:4.8.2
     bioconductor-deseq2 \
     bioconductor-dropletutils \
     bioconductor-hsmmsinglecell \
+    bioconductor-loomexperiment \
     bioconductor-mast \
     bioconductor-monocle \
     bioconductor-scater \
@@ -96,6 +97,7 @@ From: gcfntnu/python-base-conda:4.8.2
     r-hmisc \
     r-irkernel \
     r-knitr \
+    r-loomr \
     r-magrittr \
     r-matrix \
     r-monocle3 \
@@ -174,6 +176,7 @@ From: gcfntnu/python-base-conda:4.8.2
 
   # install R dependencies not available from conda
   R -e "devtools::install_github(repo = 'yanlinlin82/ggvenn')"
+  R -r 'devtools::install_github("cellgeni/sceasy")'
   R -e 'BiocManager::install(c(
     "romanhaa/cerebroApp"),
     ask = FALSE, update = FALSE)'
