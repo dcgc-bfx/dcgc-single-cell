@@ -26,5 +26,5 @@ jobs:
         sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         cd single_cell
         df -h
-        singularity build single_cell.sif Singularity
+        singularity build --disable-cache single_cell.sif Singularity
         df -h
