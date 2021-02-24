@@ -21,7 +21,10 @@ jobs:
 
     - name: Build Container
       run: |
+        df -h
         sudo rm -rf "/usr/local/share/boost"
         sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         cd single_cell
+        df -h
         singularity build single_cell.sif Singularity
+        df -h

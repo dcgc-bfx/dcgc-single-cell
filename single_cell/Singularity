@@ -143,7 +143,7 @@ From: gcfntnu/python-base-conda:4.8.2
   # jupyterlab extensions
   jupyter labextension install "@jupyterlab/toc"
   # download jupyter config
-  wget https://raw.githubusercontent.com/dcgc-bfx/dcgc-single-cell/main/single_cell/jupyter_notebook_config.json \
+  wget --no-verbose https://raw.githubusercontent.com/dcgc-bfx/dcgc-single-cell/main/single_cell/jupyter_notebook_config.json \
       --directory-prefix=/opt/conda/etc/jupyter/
 
   # rstudio server & desktop
@@ -158,11 +158,11 @@ From: gcfntnu/python-base-conda:4.8.2
     mesa-utils \
     qt5-default 
   
-  wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.1093-amd64.deb
+  wget --no-verbose https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.1093-amd64.deb
   gdebi -n rstudio-server-1.3.1093-amd64.deb
   rm rstudio-server-1.3.1093-amd64.deb
   
-  wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1103-amd64.deb
+  wget --no-verbose https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1103-amd64.deb
   gdebi -n rstudio-1.4.1103-amd64.deb
   rm rstudio-1.4.1103-amd64.deb
   
