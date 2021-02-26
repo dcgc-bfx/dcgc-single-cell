@@ -79,7 +79,7 @@ From: gcfntnu/python-base-conda:4.8.2
     bioconductor-scran \
     bioconductor-slingshot \
     r-argparse \
-    r-base \
+    r-base=4 \
     r-biocmanager \
     r-kableextra \
     r-data.table \
