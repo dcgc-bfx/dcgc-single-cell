@@ -166,7 +166,7 @@ From: gcfntnu/python-base-conda:4.8.2
 
   # install R dependencies not available from conda
   R -e "devtools::install_github(repo = 'yanlinlin82/ggvenn')"
-  R -r 'devtools::install_github("cellgeni/sceasy")'
+  R -e 'devtools::install_github("cellgeni/sceasy")'
   R -e 'BiocManager::install(c(
     "romanhaa/cerebroApp"),
     ask = FALSE, update = FALSE)'
