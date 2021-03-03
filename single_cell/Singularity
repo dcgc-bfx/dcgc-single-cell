@@ -8,10 +8,6 @@ From: gcfntnu/python-base-conda:4.8.2
   Start rstudio server:
     singularity run --writable-tmpfs --app rstudio-server library://fabianrost84/dcgc/single-cell.sif 8787
 
-  Start rstudio desktop
-    singularity run --writable-tmpfs --app rstudio library://fabianrost84/dcgc/single-cell.sif
-  
-
 %environment
   DEBIAN_FRONTEND=noninteractive
 
