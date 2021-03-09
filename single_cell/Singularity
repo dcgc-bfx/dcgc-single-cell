@@ -145,7 +145,7 @@ From: gcfntnu/python-base-conda:4.8.2
   wget https://raw.githubusercontent.com/dcgc-bfx/dcgc-single-cell/main/single_cell/jupyter_notebook_config.json \
       --directory-prefix=/opt/conda/etc/jupyter/
 
-  # rstudio server & desktop
+  # rstudio server 
   apt-get update 
   apt-get install -y \
     gdebi-core \
@@ -183,13 +183,6 @@ From: gcfntnu/python-base-conda:4.8.2
 
 %apprun rstudio-server
   conda run --no-capture-output -p /opt/conda /rstudio-server-conda/start_rstudio_server.sh "${@}"
-
-#####################
-## rstudio desktop ##
-#####################
-
-%apprun rstudio
-  conda run --no-capture-output -p /opt/conda rstudio "${@}"
 
 #################
 ## jupyter lab ##
