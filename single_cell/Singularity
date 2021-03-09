@@ -133,10 +133,11 @@ From: gcfntnu/python-base-conda:4.8.2
     fa2 \
     FlowKit \
     gprofiler-official \
-    magic-impute && \
-  pip install --no-cache-dir git+https://github.com/theislab/scachepy && \
-  pip install --no-cache-dir git+https://github.com/DmitryUlyanov/Multicore-TSNE.git && \
-  pip install --no-cache-dir git+https://github.com/theislab/diffxpy
+    magic-impute 
+  pip install --no-cache-dir git+https://github.com/theislab/diffxpy 
+  pip install --no-cache-dir git+https://github.com/DmitryUlyanov/Multicore-TSNE.git 
+  pip install --no-cache-dir git+https://github.com/theislab/scachepy 
+  pip install --no-cache-dir git+https://github.com/calico/solo.git
 
   # jupyterlab extensions
   jupyter labextension install "@jupyterlab/toc"
