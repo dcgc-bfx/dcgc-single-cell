@@ -3,8 +3,11 @@ on:
   push:
     branches:
       - main
-jobs:
+  pull_request:
+    branches:
+      - main
 
+jobs:
   buildandpush:
     name: Build and Remote-Build
     runs-on: ubuntu-18.04
@@ -12,23 +15,17 @@ jobs:
       matrix:
         singularity_version:
           - '3.4.2'
+
     container:
       image: quay.io/singularity/singularity:v${{ matrix.singularity_version }}
       options: --privileged
+
     steps:
     - name: Check out code for the container build
       uses: actions/checkout@v2
 
-#     - name: Build Container
-#       run: |
-#         cd single_cell
-#         singularity build single_cell.sif Singularity
-
-    - name: Remote-Build Container
-      env:
-        SYLABS_TOKEN: ${{secrets.SYLABS_TOKEN}}
+    - name: Build Container
       run: |
         cd single_cell
-        echo "$SYLABS_TOKEN" > sylabs-token
-        singularity remote login --tokenfile sylabs-token
-        singularity build --remote library://fabianrost84/dcgc/single-cell.sif:latest Singularity
+        singularity build single_cell.sif Singularity
+
