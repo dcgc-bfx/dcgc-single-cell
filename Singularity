@@ -87,28 +87,28 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.1
     r-shinywidgets
 
   # clean conda cache
-  mamba clean -ai
+  mamba clean -ai --quiet --yes
 
   # pip
-  pip --no-cache-dir install -U \
+  pip -q --no-cache-dir install -U \
     fa2 \
     FlowKit \
     gprofiler-official \
     magic-impute
-  pip install --no-cache-dir git+https://github.com/theislab/diffxpy
-  pip install --no-cache-dir git+https://github.com/DmitryUlyanov/Multicore-TSNE.git
-  pip install --no-cache-dir git+https://github.com/theislab/scachepy
-  pip install --no-cache-dir git+https://github.com/calico/solo.git
+  pip install -q --no-cache-dir git+https://github.com/theislab/diffxpy
+  pip install -q --no-cache-dir git+https://github.com/DmitryUlyanov/Multicore-TSNE.git
+  pip install -q --no-cache-dir git+https://github.com/theislab/scachepy
+  pip install -q --no-cache-dir git+https://github.com/calico/solo.git
 
   # install R dependencies not available from conda
-  R -e "devtools::install_github(repo = 'yanlinlin82/ggvenn')"
-  R -e 'devtools::install_github("cellgeni/sceasy")'
+  R -e "devtools::install_github(repo = 'yanlinlin82/ggvenn'i, quiet = TRUE)"
+  R -e 'devtools::install_github("cellgeni/sceasy", quiet = TRUE)'
   R -e 'BiocManager::install(c(
     "romanhaa/cerebroApp"),
-    ask = FALSE, update = FALSE)'
+    ask = FALSE, update = FALSE, quiet = TRUE)'
 
-  R -e "devtools::install_github(repo = 'cboettig/knitcitations')"
+  R -e "devtools::install_github(repo = 'cboettig/knitcitations', quiet = TRUE)"
   R -e 'install.packages(c(
         "PoiClaClu",
         "hutils",
-        "singleCellHaystack"), repos="http://cran.r-project.org")'
+        "singleCellHaystack"), repos="http://cran.r-project.org", quiet = TRUE)'
