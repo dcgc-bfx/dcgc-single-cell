@@ -7,8 +7,8 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.1
   Start jupyter lab:
     singularity run --writable-tmpfs --app jupyter library://fabianrost84/dcgc/single-cell.sif
 
-  Start rstudio server:
-    singularity run --writable-tmpfs --app rstudio-server library://fabianrost84/dcgc/single-cell.sif 8787
+  Start rstudio server listening on port 8787:
+    singularity run --writable-tmpfs --app rserver library://fabianrost84/dcgc/single-cell.sif 8787
 
 %environment
   DEBIAN_FRONTEND=noninteractive
