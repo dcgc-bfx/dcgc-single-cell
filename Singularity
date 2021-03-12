@@ -1,5 +1,5 @@
 Bootstrap: shub
-From:  dcgc-bfx/dcgc-jupyter-rstudio
+From:  dcgc-bfx/dcgc-jupyter-rstudio:0.1
 
 %help
   Container for single cell analysis.
