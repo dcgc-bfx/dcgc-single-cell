@@ -9,7 +9,7 @@ on:
 
 jobs:
   buildandpush:
-    name: Build and Remote-Build
+    name: Build 
     runs-on: ubuntu-18.04
     strategy:
       matrix:
@@ -26,6 +26,5 @@ jobs:
 
     - name: Build Container
       run: |
-        cd single_cell
         singularity build single_cell.sif Singularity
 
