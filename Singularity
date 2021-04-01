@@ -15,6 +15,9 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 %post
+  DEBIAN_FRONTEND=noninteractive
+  export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
   apt-get update -q
   apt-get install -y -q libatlas-base-dev
   apt-get clean -q
