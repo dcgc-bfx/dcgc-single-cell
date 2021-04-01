@@ -12,10 +12,9 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
 
 %environment
   DEBIAN_FRONTEND=noninteractive
-
-%post
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+%post
   apt-get update -q
   apt-get install -y -q libatlas-base-dev
   apt-get clean -q
@@ -137,9 +136,10 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
   chmod -R a+w /opt
 
 %test
+  echo $PATH
+
   # scanpy import
   bash <<-EOF
-	conda init bash
 	source ~/.bashrc
         conda activate /opt/conda
         NUMBA_CACHE_DIR=/tmp python -c "import scanpy; scanpy.logging.print_versions()"
@@ -147,7 +147,7 @@ EOF
 
   # Seurat import
   bash <<-EOF
-	. "/group/crtd_bioinf/miniconda3/etc/profile.d/conda.sh"
-        source activate /opt/conda
+	source ~/.bashrc
+        conda activate /opt/conda
         R --quiet -e "library(Seurat); sessionInfo()"
 EOF
