@@ -139,7 +139,8 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
 %test
   # scanpy import
   bash <<-EOF
-	. "/group/crtd_bioinf/miniconda3/etc/profile.d/conda.sh"
+	conda init bash
+	source ~/.bashrc
         conda activate /opt/conda
         NUMBA_CACHE_DIR=/tmp python -c "import scanpy; scanpy.logging.print_versions()"
 EOF
