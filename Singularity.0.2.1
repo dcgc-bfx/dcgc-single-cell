@@ -136,15 +136,3 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
 
   chmod -R a+w /opt
 
-%test
-  # scanpy import
-  bash <<-EOF
-        source activate /opt/conda
-        NUMBA_CACHE_DIR=/tmp python -c "import scanpy; scanpy.logging.print_versions()"
-EOF
-
-  # Seurat import
-  bash <<-EOF
-        source activate /opt/conda
-        R --quiet -e "library(Seurat); sessionInfo()"
-EOF
