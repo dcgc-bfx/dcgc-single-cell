@@ -11,11 +11,11 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
     singularity run --writable-tmpfs --app rserver library://fabianrost84/dcgc/single-cell.sif 8787
 
 %environment
-  DEBIAN_FRONTEND=noninteractive
+  export DEBIAN_FRONTEND=noninteractive
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 %post
-  DEBIAN_FRONTEND=noninteractive
+  export DEBIAN_FRONTEND=noninteractive
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
   apt-get update -q
@@ -139,16 +139,14 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
   chmod -R a+w /opt
 
 %test
-  echo $PATH
-
-  # scanpy import
+  # scanpy
   bash <<-EOF
 	source ~/.bashrc
         conda activate /opt/conda
         NUMBA_CACHE_DIR=/tmp python -c "import scanpy; scanpy.logging.print_versions()"
 EOF
 
-  # Seurat import
+  # Seurat
   bash <<-EOF
 	source ~/.bashrc
         conda activate /opt/conda
