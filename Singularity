@@ -72,8 +72,10 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
     r-enrichr \
     r-factoextra \
     r-fastmatch \
+    r-furrr \
     r-future \
     r-gam \
+    r-ggthemes \
     r-kableextra \
     r-loomr \
     r-monocle3 \
@@ -82,9 +84,11 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
     r-pheatmap \
     r-readr \
     r-refmanager \
+    r-remotes \
     r-rgl \
     r-sctransform \
     r-seurat=4 \
+    r-spam \
     r-spatstat=1.64_1 \
     r-spatstat.core \
     r-upsetr \
@@ -99,6 +103,7 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
     bioconductor-matrixgenerics \
     bioconductor-qvalue \
     bioconductor-s4vectors \
+    bioconductor-glmgampoi \
     r-colourpicker \
     r-formatr \
     r-msigdbr \
@@ -124,6 +129,7 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
   # install R dependencies not available from conda
   R --quiet -e "devtools::install_github(repo = 'yanlinlin82/ggvenn', dependencies = FALSE, quiet = TRUE)"
   R --quiet -e 'devtools::install_github("cellgeni/sceasy", dependencies = FALSE, quiet = TRUE)'
+  R --quiet -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")'
 
   R --quiet -e 'BiocManager::install(c(
       "GenomeInfoDbData",
