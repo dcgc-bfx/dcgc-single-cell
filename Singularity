@@ -38,6 +38,7 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
     libtiff=4.1 `# version 4.2 breaks plotting` \
     loompy \
     louvain \
+    multicore-tsne \
     pybedtools \
     pybiomart \
     pypairs \
@@ -117,7 +118,6 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.0
     gprofiler-official \
     magic-impute
   pip install -q --no-cache-dir git+https://github.com/theislab/diffxpy
-  pip install -q --no-cache-dir git+https://github.com/DmitryUlyanov/Multicore-TSNE.git
   pip install -q --no-cache-dir git+https://github.com/theislab/scachepy
   pip install -q --no-cache-dir git+https://github.com/calico/solo.git
 
