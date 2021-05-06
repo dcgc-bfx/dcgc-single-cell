@@ -148,12 +148,14 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
         "singleCellHaystack"), repos="http://cran.r-project.org", quiet = TRUE)'
 
   chmod -R a+w /opt
+  cp /root/.bashrc /.bashrc
+  chmod a+rw /.bashrc
 
 %test
   # scanpy
   bash <<-EOF
-    #source ~/.bashrc
-        source activate /opt/conda
+    source /.bashrc
+        conda activate /opt/conda
         python /tests/scanpy_test.py
 EOF
   if [ $? -eq 0 ]; then
@@ -165,8 +167,8 @@ EOF
 
   # Seurat
   bash <<-EOF
-    #source ~/.bashrc
-        source activate /opt/conda
+    source /.bashrc
+        conda activate /opt/conda
         R --quiet -e "library(Seurat); sessionInfo()"
 EOF
   if [ $? -eq 0 ]; then
