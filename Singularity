@@ -22,11 +22,6 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
   export DEBIAN_FRONTEND=noninteractive
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-  apt-get update -q
-  apt-get install -y -q libatlas-base-dev
-  apt-get clean -q
-  rm -rf /var/lib/apt/lists/*
-
   # install python packages with mamba
   mamba install --quiet --yes \
     anndata \
@@ -155,8 +150,8 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
   # scanpy
   bash <<-EOF
     source /.bashrc
-        conda activate /opt/conda
-        python /tests/scanpy_test.py
+    conda activate /opt/conda
+    python /tests/scanpy_test.py
 EOF
   if [ $? -eq 0 ]; then
       echo "scanpy works as expected."
@@ -168,8 +163,8 @@ EOF
   # Seurat
   bash <<-EOF
     source /.bashrc
-        conda activate /opt/conda
-        R --quiet -e "library(Seurat); sessionInfo()"
+    conda activate /opt/conda
+    R --quiet -e "library(Seurat); sessionInfo()"
 EOF
   if [ $? -eq 0 ]; then
       echo "Seurat works as expected."
