@@ -5,14 +5,18 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
   Container for single cell analysis.
 
   Start jupyter lab:
-    singularity run --writable-tmpfs --app jupyter library://fabianrost84/dcgc/single-cell.sif
+    singularity run --writable-tmpfs --app jupyter shub://dcgc-bfx/dcgc-single-cell
 
   Start rstudio server listening on port 8787:
-    singularity run --writable-tmpfs --app rserver library://fabianrost84/dcgc/single-cell.sif 8787
+    singularity run --writable-tmpfs --app rserver shub://dcgc-bfx/dcgc-single-cell 8787
+    
+%files
+  tests/scanpy_test.py
 
 %environment
   export DEBIAN_FRONTEND=noninteractive
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  export NUMBA_CACHE_DIR=/tmp 
 
 %post
   export DEBIAN_FRONTEND=noninteractive
@@ -38,6 +42,7 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
     libtiff=4.1 `# version 4.2 breaks plotting` \
     loompy \
     louvain \
+    numba=0.52 `# version 0.53 breaks scanpy neighbors` \
     pybedtools \
     pybiomart \
     pypairs \
@@ -147,14 +152,26 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
 %test
   # scanpy
   bash <<-EOF
-	source ~/.bashrc
-        conda activate /opt/conda
-        NUMBA_CACHE_DIR=/tmp python -c "import scanpy; scanpy.logging.print_versions()"
+    #source ~/.bashrc
+        source activate /opt/conda
+        python /tests/scanpy_test.py
 EOF
+  if [ $? -eq 0 ]; then
+      echo "scanpy works as expected."
+  else
+      echo "scanpy error"
+      exit 1
+  fi
 
   # Seurat
   bash <<-EOF
-	source ~/.bashrc
-        conda activate /opt/conda
+    #source ~/.bashrc
+        source activate /opt/conda
         R --quiet -e "library(Seurat); sessionInfo()"
 EOF
+  if [ $? -eq 0 ]; then
+      echo "Seurat works as expected."
+  else
+      echo "Seurat error"
+      exit 1
+  fi
