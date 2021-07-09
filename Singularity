@@ -43,6 +43,7 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
     pypairs \
     pytables \
     python-igraph \
+    rpy2=3.4.2 \
     scanpy \
     scikit-learn \
     scrublet \
@@ -88,6 +89,7 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
     r-rgl \
     r-sctransform \
     r-seurat=4 \
+    r-seuratobject>=4.0.2 \
     r-spam \
     r-spatstat=1.64_1 \
     r-spatstat.core \
@@ -120,6 +122,7 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
   pip -q --no-cache-dir install -U \
     fa2 \
     gprofiler-official \
+    harmonypy \
     magic-impute 
 
   pip install -q --no-cache-dir git+https://github.com/theislab/diffxpy
@@ -154,9 +157,9 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
     python /tests/scanpy_test.py
 EOF
   if [ $? -eq 0 ]; then
-      echo "scanpy works as expected."
+      echo "scanpy tests passed."
   else
-      echo "scanpy error"
+      echo "scanpy error."
       exit 1
   fi
 
@@ -167,7 +170,7 @@ EOF
     R --quiet -e "library(Seurat); sessionInfo()"
 EOF
   if [ $? -eq 0 ]; then
-      echo "Seurat works as expected."
+      echo "Seurat tests passed."
   else
       echo "Seurat error"
       exit 1
