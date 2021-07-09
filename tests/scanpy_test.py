@@ -14,7 +14,7 @@ sc.tl.rank_genes_groups(adata, 'leiden')
 sc.pl.umap(adata)
 
 # anndata2ri
-adata = sc.datasets.pbmc3k()
+adata = sc.AnnData(X=sp.sparse.csr_matrix([[0, 1], [1, 0]]))
 anndata2ri.py2rpy(adata)
 
 
