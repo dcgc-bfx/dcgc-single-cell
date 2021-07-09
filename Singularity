@@ -20,7 +20,7 @@ From:  dcgc-bfx/dcgc-jupyter-rstudio:0.2.1
 
 %post
   SINGULARITY_BUILD_DATE=`date`
-  echo "export SINGULARITY_BUILD_DATE=\"${SINGULARITY_BUILD_DATE}\"" >> $SINGULARITY_ENVIRONMENT
+  echo "export SINGULARITY_BUILD_DATE=\"Container build date: ${SINGULARITY_BUILD_DATE}\"" >> $SINGULARITY_ENVIRONMENT
 
   export DEBIAN_FRONTEND=noninteractive
   export PATH=/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
