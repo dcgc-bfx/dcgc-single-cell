@@ -1,5 +1,6 @@
-import scanpy as sc
 import anndata2ri
+import scanpy as sc
+import scipy as sp
 
 adata = sc.datasets.blobs()
 
